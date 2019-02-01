@@ -1,0 +1,6 @@
+/backups
+/documentation
+/node_modules
+package-lock.json
+*.log
+loteriaBingo.code-workspace
