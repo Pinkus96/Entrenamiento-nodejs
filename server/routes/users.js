@@ -17,8 +17,8 @@ router.post("/create", (req, res) => {
         "type": "object",
         "properties": {
             "password": { "type": "string" },
-            "name": { "type": "string" },
-            "email": { "type": "string", "format": "email" },
+            "name": { "type": "string", "validateExistance": { "table": table, "property": "name" } },
+            "email": { "type": "string", "format": "email", "validateGmail": { "table": table, "property": "email" } },
             "phone": { "type": "integer" }
         },
         "required": ["name", "password"]
@@ -124,8 +124,8 @@ router.put("/update", (req, res) => {
         "type": "object",
         "properties": {
             "id": { "type": "string", "format": "uuid" },
-            "name": { "type": "string" },
-            "email": { "type": "string", "format": "email" },
+            "name": { "type": "string", "validateExistance": { "table": table, "property": "name" } },
+            "email": { "type": "string", "format": "email", "validateGmail": { "table": table, "property": "email" } },
             "phone": { "type": "integer" }
         },
         "required": ["id"]
