@@ -26,6 +26,7 @@ router.post("/create", (req, res) => {
 
     ajv.validate(schema, data)
         .then(valid => {
+            data.createdBy = req.decoded['id'];
             db.create(table, data)
                 .then(result => {
                     res.status(300).json({

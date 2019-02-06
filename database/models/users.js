@@ -16,5 +16,6 @@ module.exports = class User {
         this.phone = phone;
 
         this.active = true;
+        this.createdOn = rethink.now();
     }
 }

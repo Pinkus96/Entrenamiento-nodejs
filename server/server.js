@@ -1,4 +1,5 @@
 require("../config/config");
+const middleware = require('../libs/middleware');
 
 const express = require('express');
 
@@ -13,8 +14,14 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json
 app.use(bodyParser.json());
 
+// ruta publica
+app.use(require("./routes/login"));
+
 // habilitar la carpeta public
 app.use(express.static(path.resolve(__dirname, "../public")));
+
+//midleware
+app.use(middleware.tokenValidator);
 
 //Configuración global de rutas
 app.use(require("./routes/index"));
